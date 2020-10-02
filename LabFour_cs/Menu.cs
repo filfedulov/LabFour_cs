@@ -52,6 +52,16 @@ namespace MenuName
                     iteratorForBlock++;
                     Console.WriteLine(ex.Message);
                 }
+                catch (OverflowException ex)
+                {
+                    iteratorForBlock++;
+                    Console.WriteLine(ex.Message);
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    iteratorForBlock++;
+                    Console.WriteLine(ex.Message);
+                }
 
             } while (forMenu != 3);
 
