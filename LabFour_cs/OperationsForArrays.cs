@@ -11,7 +11,7 @@ namespace OperationsForArraysName
             choiceIndex,
             k = 0;
         protected static bool algorithmExit,
-            delete;
+            deleteYesOrNo;
         protected static int from,
             to,
             max = 0,
@@ -68,15 +68,15 @@ namespace OperationsForArraysName
 
         private static void MaxElement(ref int[] intArray, ref int max, ref int indexForDelete)
         {
-            delete = false;
+            deleteYesOrNo = false;
             max = 0;
             indexForDelete = 0;
             for (uint i = 0; i < intArray.Length; i++)
             {
                 if (intArray[i] > max)
                 {
-                    if (!delete)
-                        delete = true;
+                    if (!deleteYesOrNo)
+                        deleteYesOrNo = true;
 
                     max = intArray[i];
                     indexForDelete = (int)i;
@@ -92,7 +92,7 @@ namespace OperationsForArraysName
             {
                 MaxElement(ref intArray, ref max, ref indexForDelete);
 
-                if(delete)
+                if(deleteYesOrNo)
                 {
                     int[] newIntArray = new int[intArray.Length - 1];
 
