@@ -149,7 +149,7 @@ namespace OperationsForArraysName
             for (uint i = 0; i < intArray.Length; i++)
             {
                 amountCompares++;
-                if (intArray[i] % 2 == 0)
+                if (intArray[i] % 2 == 0 && intArray[i] != 0)
                 {
                     evenFirst = intArray[i];
                     break;

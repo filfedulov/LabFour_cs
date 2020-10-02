@@ -14,7 +14,7 @@ namespace MenuName
         {
             uint forMenu = 0,
                 iteratorForBlock = 0;
-            const UInt16 blockProg = 3;
+            const UInt16 blockProg = 5;
             Console.WriteLine("\tПРОГРАММА ДЛЯ РАБОТЫ С ОДНОМЕРНЫМИ МАССИВАМИ");
             Menu objectArray = new Menu();
 
@@ -24,7 +24,7 @@ namespace MenuName
                 {
 
                     if (iteratorForBlock == blockProg - 1)
-                        Console.WriteLine("\nОСТАЛАСЬ ПОСЛЕДНЯЯ ПОПЫТКА ВВОДА!!!\n");
+                        Console.WriteLine("\nОСТАЛАСЬ ПОСЛЕДНЯЯ ПОПЫТКА НЕКОРЕКТНОГО ВВОДА!!!\n");
                     else if (iteratorForBlock == blockProg)
                     {
                         Console.WriteLine("ПРЕВЫШЕННО ЧИСЛО ПОПЫТОК КОРЕКТНОГО ВВОДА");
@@ -66,7 +66,7 @@ namespace MenuName
                     {
 
                         if (iteratorForBlock == blockProg - 1)
-                            Console.WriteLine("\nОСТАЛАСЬ ПОСЛЕДНЯЯ ПОПЫТКА ВВОДА!!!\n");
+                            Console.WriteLine("\nОСТАЛАСЬ ПОСЛЕДНЯЯ ПОПЫТКА НЕКОРЕКТНОГО ВВОДА!!!\n");
                         else if (iteratorForBlock == blockProg)
                         {
                             Console.WriteLine("ПРЕВЫШЕННО ЧИСЛО ПОПЫТОК КОРЕКТНОГО ВВОДА");
