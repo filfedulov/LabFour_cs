@@ -8,15 +8,31 @@ namespace OperationsForArraysName
         Random random = new Random();
         protected static int[] intArray;
         protected static uint amountElements,
-            choiceIndex;
-        protected static bool algorithmExit;
+            choiceIndex,
+            k = 0;
+        protected static bool algorithmExit,
+            delete;
         protected static int from,
             to,
             max = 0,
             indexForDelete = 0,
-            k = 0,
             evenFirst,
-            amountCompares;
+            amountCompares,
+            forInput;
+
+        protected void InputArray()
+        {
+            Console.WriteLine("Введите количество элементов в массиве: ");
+            amountElements = uint.Parse(Console.ReadLine());
+            intArray = new int[amountElements];
+
+            for (uint i = 0; i < intArray.Length; i++)
+            {
+                Console.WriteLine($"Элемент {i + 1}-й: ");
+                forInput = int.Parse(Console.ReadLine());
+                intArray[i] = forInput;
+            }
+        }
 
 
         protected void CreateArray(out int[] intArray, out uint amountElements)
@@ -40,8 +56,6 @@ namespace OperationsForArraysName
 
         protected void CoutArray(in int[] intArray)
         {
-            Console.WriteLine("Массив заполненный случайными числами заданного диапазона\n");
-
             for(uint i = 0; i < intArray.Length; i++)
             {
                 Console.Write($"{intArray[i]} ");
@@ -54,16 +68,18 @@ namespace OperationsForArraysName
 
         private static void MaxElement(ref int[] intArray, ref int max, ref int indexForDelete)
         {
-            for(uint i = 0 ; i < 1; i++)
+            delete = false;
+            max = 0;
+            indexForDelete = 0;
+            for (uint i = 0; i < intArray.Length; i++)
             {
-                max = intArray[i];
-                for (uint j = 1; j < intArray.Length; j++)
+                if (intArray[i] > max)
                 {
-                    if (intArray[j] > max)
-                    {
-                        max = intArray[j];
-                        indexForDelete = (int)j;
-                    }
+                    if (!delete)
+                        delete = true;
+
+                    max = intArray[i];
+                    indexForDelete = (int)i;
                 }
             }
 
@@ -72,29 +88,36 @@ namespace OperationsForArraysName
 
         protected void DeleteMaxElement(ref int[] intArray, ref int max, ref int indexForDelete)
         {
-            MaxElement(ref intArray, ref max, ref indexForDelete);
-            int[] newIntArray = new int[intArray.Length - 1];
+            if(intArray.Length > 1)
+            {
+                MaxElement(ref intArray, ref max, ref indexForDelete);
 
-            for (uint i = 0; i < indexForDelete; i++)
-                newIntArray[i] = intArray[i];
+                if(delete)
+                {
+                    int[] newIntArray = new int[intArray.Length - 1];
 
-            for (uint i = (uint)((int)indexForDelete + 1); i < intArray.Length; i++)
-                newIntArray[i - 1] = intArray[i];
+                    for (uint i = 0; i < indexForDelete; i++)
+                        newIntArray[i] = intArray[i];
 
-            intArray = newIntArray;
+                    for (uint i = (uint)((int)indexForDelete + 1); i < intArray.Length; i++)
+                        newIntArray[i - 1] = intArray[i];
+
+                    intArray = newIntArray;
+                }
+            }
 
             return;
         }
 
-        protected void AddInStartArray(int k)
+        protected void AddInStartArray(uint k)
         {
             Console.Write("Сколько элементов желаете добавить в начало массива?: ");
-            k = int.Parse(Console.ReadLine());
+            k = uint.Parse(Console.ReadLine());
 
             int[] newIntArray = new int[intArray.Length + k];
             uint j = 0;
             
-            for (uint i = (uint)k; i < newIntArray.Length; i++)
+            for (uint i = k; i < newIntArray.Length; i++)
             {
                  newIntArray[i] = intArray[j];
                  j++;
