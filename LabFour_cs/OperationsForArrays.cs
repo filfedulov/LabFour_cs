@@ -69,17 +69,24 @@ namespace OperationsForArraysName
         private static void MaxElement(ref int[] intArray, ref int max, ref int indexForDelete)
         {
             deleteYesOrNo = false;
-            max = 0;
+            uint i = 0;
+            max = intArray[i];
             indexForDelete = 0;
-            for (uint i = 0; i < intArray.Length; i++)
+            for (; i < intArray.Length - 1; i++)
             {
-                if (intArray[i] > max)
+                if (intArray[i + 1] < max)
                 {
+                    max = intArray[i + 1];
+                    indexForDelete = (int)(i + 1);
+                    if (!deleteYesOrNo)
+                    deleteYesOrNo = true;
+                }
+                else if (intArray[i + 1] > max)
+                {
+                    max = intArray[i + 1];
+                    indexForDelete = (int)(i + 1);
                     if (!deleteYesOrNo)
                         deleteYesOrNo = true;
-
-                    max = intArray[i];
-                    indexForDelete = (int)i;
                 }
             }
 
