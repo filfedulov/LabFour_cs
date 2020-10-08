@@ -1,12 +1,11 @@
 ﻿using MenuName;
-using System;
 
 
 namespace MainName
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Menu.MenuForThem();
         }
