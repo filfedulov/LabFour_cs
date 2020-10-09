@@ -444,6 +444,9 @@ namespace OperationsForArraysName
             {
                     mid = (uint)((min + max) / 2);
                     countQueryOnKey++;
+
+                try
+                {
                     if (intArray[mid] < key)
                     {
                         min = (int)(mid + 1);
@@ -458,6 +461,11 @@ namespace OperationsForArraysName
                     {
                         searchElementYes = true;
                     }
+                }
+                catch(IndexOutOfRangeException iex)
+                {
+                    Console.WriteLine(iex.Message);
+                }
 
                    if (searchElementYes)
                         return searchElementYes;

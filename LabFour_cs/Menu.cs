@@ -82,6 +82,7 @@ namespace MenuName
                                             Console.WriteLine($"\nПервый четный элемент = {evenFirst}, Количество попыток поиска = {amountCompares}.\n");
                                         else
                                             Console.WriteLine("\nВ массиве нет четных элементов.\n");
+                                        searchEvenElement = false;
                                         break;
                                     case 6:
                                         objectArray.SortExchange();
